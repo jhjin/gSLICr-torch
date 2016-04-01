@@ -7,6 +7,7 @@ void gSLICr_init(int x, int y, int no_segs, int spixel_size,
                  int seg_method, bool do_enforce_connectivity);
 void gSLICr_feed(uint8_t *input);
 void gSLICr_process();
+void gSLICr_get_seg(float *output);
 void gSLICr_retrieve(uint8_t *output);
 ]]
 
@@ -51,6 +52,10 @@ end
 
 function gSLICr.process()
    gSLICr.C['gSLICr_process']()
+end
+
+function gSLICr.get_seg(output)
+   gSLICr.C['gSLICr_get_seg'](torch.data(output))
 end
 
 function gSLICr.retrieve(output)

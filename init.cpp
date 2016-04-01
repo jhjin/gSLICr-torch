@@ -57,6 +57,18 @@ void gSLICr_process()
 }
 
 extern "C"
+void gSLICr_get_seg(float *output)
+{
+   const gSLICr::IntImage* idx_img = gSLICr_engine->Get_Seg_Res();
+   const int* data_ptr = idx_img->GetData(MEMORYDEVICE_CPU);
+
+   int idx_img_size = idx_img->noDims.x * idx_img->noDims.y;
+   for (int i = 0; i < idx_img_size; i++) {
+      output[i] = data_ptr[i];
+   }
+}
+
+extern "C"
 void gSLICr_retrieve(uint8_t *output)
 {
    gSLICr_engine->Draw_Segmentation_Result(out_img);
