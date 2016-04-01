@@ -13,8 +13,9 @@ luarocks make
 ```
 
 
-## Demo
+## Demos
 
 ```bash
-qlua demo.lua
+qlua visual_demo.lua input.jpg
+th seg_mask_demo.lua input.jpg output.dat
 ```
